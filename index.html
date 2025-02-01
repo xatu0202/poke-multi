@@ -1,3 +1,4 @@
+
 <script>
 const kanaMap = {
   // ひらがな
@@ -7,7 +8,7 @@ const kanaMap = {
   "だ": "た", "ぢ": "ち", "づ": "つ", "で": "て", "ど": "と",
   "ば": "は", "び": "ひ", "ぶ": "ふ", "べ": "へ", "ぼ": "ほ",
   "ぱ": "は", "ぴ": "ひ", "ぷ": "ふ", "ぺ": "へ", "ぽ": "ほ",
-  "ゔ": "う", "ゕ": "か", "ゖ": "け",
+  "ゔ": "う", "ゕ": "か", "ゖ": "け", "っ": "つ",
   
   // カタカナ
   "ァ": "あ", "ィ": "い", "ゥ": "う", "ェ": "え", "ォ": "お",
@@ -16,7 +17,7 @@ const kanaMap = {
   "ダ": "た", "ヂ": "ち", "ヅ": "つ", "デ": "て", "ド": "と",
   "バ": "は", "ビ": "ひ", "ブ": "ふ", "ベ": "へ", "ボ": "ほ",
   "パ": "は", "ピ": "ひ", "プ": "ふ", "ペ": "へ", "ポ": "ほ",
-  "ヴ": "う", "ヵ": "か", "ヶ": "け",
+  "ヴ": "う", "ヵ": "か", "ヶ": "け", "ッ": "つ",
   
   // カタカナ → ひらがな
   "ア": "あ", "イ": "い", "ウ": "う", "エ": "え", "オ": "お",
@@ -38,6 +39,7 @@ function check(){
   });
   if((new Set(chars)).size === chars.length) alert("OK");
   else alert("NG");
+  document.getElementById("used").value = chars.filter((x, i, self) => self.indexOf(x) !== self.lastIndexOf(x)).toSorted();
 }
 window.addEventListener("load",
   () => document.getElementById("check").addEventListener("click", check)
@@ -46,3 +48,5 @@ window.addEventListener("load",
 <title>マルチ確認用</title>
 <textarea rows=10 cols=20 id="text"></textarea>
 <button id="check">チェック</button>
+
+<textarea rows=10 cols=20 id="used"></textarea>
