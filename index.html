@@ -37,9 +37,10 @@ function check(){
   const chars = text.replace(/\s/g, "").replace(/ー/g, "").split("").map(char => {
     return kanaMap[char]??char
   });
-  if((new Set(chars)).size === chars.length) alert("OK");
-  else alert("NG");
-  document.getElementById("used").value = chars.filter((x, i, self) => self.indexOf(x) !== self.lastIndexOf(x)).toSorted();
+  if((new Set(chars)).size === chars.length)
+    document.getElementById("used").value = "OK";
+  else
+    document.getElementById("used").value = chars.filter((x, i, self) => self.indexOf(x) !== self.lastIndexOf(x)).toSorted();
 }
 window.addEventListener("load",
   () => document.getElementById("check").addEventListener("click", check)
