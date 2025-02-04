@@ -715,7 +715,9 @@
 
     input.addEventListener("input", onInput);
     select.addEventListener("change", () => {
-      input.value = input.value.trimEnd() + "\n" + select.value;
+      const prevValue = input.value.trimEnd();
+      input.value =
+        prevValue.length !== 0 ? `${prevValue}\n${select.value}` : select.value;
       onInput();
     });
   });
